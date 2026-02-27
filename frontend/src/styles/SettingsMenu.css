@@ -40,15 +40,15 @@
 }
 
 .settings-item.logout {
-  color: #ff6b6b;
+  color: #f0a8a8;
 }
 
 .settings-item.logout:hover {
-  background: rgba(255, 107, 107, 0.1);
+  background: rgba(240, 168, 168, 0.1);
 }
 
 .settings-item.logout .settings-title {
-  color: #ff6b6b;
+  color: #f0a8a8;
 }
 
 .settings-item:last-child {
@@ -61,7 +61,7 @@
 }
 
 .settings-subtext {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.95rem;
   margin-top: 4px;
 }

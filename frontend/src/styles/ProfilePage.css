@@ -18,10 +18,7 @@
 .profile-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.3rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f5f5f5;
   letter-spacing: -0.01em;
 }
 
@@ -33,14 +30,14 @@
 .back-button,
 .action-button {
   border: 1px solid var(--border);
-  background: linear-gradient(120deg, rgba(224, 123, 114, 0.9), rgba(107, 94, 219, 0.88));
-  color: #0c0e12;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 10px;
   padding: 10px 16px;
   cursor: pointer;
   font-weight: 700;
   transition: all 0.2s ease;
-  box-shadow: 0 10px 22px rgba(107, 94, 219, 0.18);
+  box-shadow: 0 10px 22px rgba(168, 216, 240, 0.08);
 }
 
 .back-button:hover,
@@ -104,13 +101,13 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: rgba(168, 216, 240, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.6rem;
   margin: 0 auto 16px;
-  color: #0c0e12;
+  color: #a8d8f0;
   font-weight: 800;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
   overflow: hidden;
@@ -144,7 +141,7 @@
 }
 
 .profile-card .email {
-  color: var(--muted);
+  color: #b0b0b0;
   margin-bottom: 10px;
   font-size: 0.95rem;
 }
@@ -161,26 +158,26 @@
 }
 
 .profile-card .pronouns {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
   margin-bottom: 6px;
 }
 
 .profile-card .location,
 .profile-card .website {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
   margin-bottom: 6px;
 }
 
 .profile-card .website a {
-  color: var(--accent);
+  color: #a8d8f0;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .profile-card .website a:hover {
-  color: var(--accent-2);
+  color: #d8a8f0;
 }
 
 .profile-stats {
@@ -200,15 +197,12 @@
 
 .stat-number {
   font-size: 1.4rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   font-weight: 800;
 }
 
 .stat-label {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
@@ -271,20 +265,20 @@
 }
 
 .post-author-info p {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
 .post-delete-btn {
-  background: linear-gradient(120deg, rgba(235, 115, 115, 0.9), rgba(197, 82, 82, 0.88));
-  color: #fff;
+  background: rgba(240, 168, 168, 0.15);
+  color: #f0a8a8;
   padding: 6px 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 22px rgba(235, 115, 115, 0.2);
+  box-shadow: 0 10px 22px rgba(240, 168, 168, 0.1);
 }
 
 .post-delete-btn:hover {
@@ -310,30 +304,30 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  color: var(--accent);
+  color: #a8d8f0;
   transition: transform 0.15s ease, color 0.15s ease;
   font-weight: 700;
 }
 
 .post-action:hover {
-  color: var(--accent-2);
+  color: #d8a8f0;
   transform: translateY(-1px);
 }
 
 .post-action.reacted {
-  color: #ff8b8b;
+  color: #d8a8f0;
 }
 
 .loading-spinner {
   text-align: center;
   padding: 40px;
-  color: var(--accent);
+  color: #a8d8f0;
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
 }
 
 .error-message {
-  color: #ff8b8b;
+  color: #f0a8a8;
   margin-top: 10px;
   text-align: center;
 }
@@ -396,17 +390,14 @@
 }
 
 .action-type {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: capitalize;
 }
 
 .hobby-space {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
   padding: 4px 10px;
   background: rgba(255, 255, 255, 0.05);
@@ -414,13 +405,13 @@
 }
 
 .effort-score {
-  color: var(--accent-2);
+  color: #d8a8f0;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .points {
-  color: var(--accent);
+  color: #a8d8f0;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -433,7 +424,7 @@
 }
 
 .action-date {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.85rem;
   margin-top: 8px;
 }

@@ -17,24 +17,21 @@
 .analytics-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.3rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f5f5f5;
   letter-spacing: -0.01em;
   margin: 0;
 }
 
 .back-button {
   border: 1px solid var(--border);
-  background: linear-gradient(120deg, rgba(224, 123, 114, 0.9), rgba(107, 94, 219, 0.88));
-  color: #0c0e12;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 10px;
   padding: 10px 16px;
   cursor: pointer;
   font-weight: 700;
   transition: all 0.2s ease;
-  box-shadow: 0 10px 22px rgba(107, 94, 219, 0.18);
+  box-shadow: 0 10px 22px rgba(168, 216, 240, 0.08);
 }
 
 .back-button:hover {
@@ -101,17 +98,13 @@
 .card-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--text);
+  color: #a8d8f0;
   margin-bottom: 4px;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .card-label {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: #b0b0b0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -161,7 +154,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  background: linear-gradient(180deg, #a8d8f0, #a8d8f0);
 }
 
 .bar:hover {
@@ -172,7 +165,7 @@
 
 .bar-value {
   font-size: 0.7rem;
-  color: #0c0e12;
+  color: #0a0a0a;
   font-weight: 700;
   padding: 2px 4px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -180,7 +173,7 @@
 
 .bar-label {
   font-size: 0.65rem;
-  color: var(--muted);
+  color: #b0b0b0;
   margin-top: 20px;
   text-align: center;
   transform: rotate(-45deg);
@@ -226,10 +219,7 @@
 .hobby-space-rank {
   font-size: 1rem;
   font-weight: 700;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   min-width: 30px;
   text-align: center;
 }
@@ -255,7 +245,7 @@
 
 .hobby-space-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, #a8d8f0, #a8d8f0);
   border-radius: 3px;
   transition: width 0.5s ease;
 }
@@ -263,10 +253,7 @@
 .hobby-space-points {
   font-size: 0.95rem;
   font-weight: 700;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   min-width: 70px;
   text-align: right;
 }
@@ -303,7 +290,7 @@
 }
 
 .stat-label {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -311,10 +298,7 @@
 .stat-value {
   font-size: 1.1rem;
   font-weight: 700;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
 }
 
 /* Recent Actions with Media */
@@ -391,7 +375,7 @@
 }
 
 .action-space {
-  color: var(--accent);
+  color: #a8d8f0;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -399,17 +383,13 @@
 }
 
 .action-points {
-  color: var(--text);
+  color: #a8d8f0;
   font-size: 1rem;
   font-weight: 700;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .action-date {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.8rem;
 }
 
@@ -431,7 +411,7 @@
 
 .no-data {
   text-align: center;
-  color: var(--muted);
+  color: #b0b0b0;
   padding: 40px 20px;
   font-style: italic;
   font-size: 0.95rem;

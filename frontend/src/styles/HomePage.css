@@ -17,18 +17,12 @@
 .home-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f5f5f5;
   letter-spacing: -0.01em;
 }
 
 .gradient-header {
-  background: linear-gradient(135deg, #ff6b6b 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f5f5f5;
 }
 
 .header-actions-right {
@@ -95,13 +89,13 @@
 }
 
 .switcher-btn.active {
-  color: var(--accent, #ff6b6b);
-  border-bottom-color: var(--accent, #ff6b6b);
+  color: #a8d8f0;
+  border-bottom-color: #a8d8f0;
 }
 
 .badge {
-  background: linear-gradient(135deg, var(--accent, #ff6b6b) 0%, var(--accent-2, #a855f7) 100%);
-  color: white;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -152,7 +146,7 @@
 }
 
 .cta-text p {
-  color: var(--muted);
+  color: #b0b0b0;
   margin: 0;
 }
 
@@ -190,11 +184,11 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: rgba(168, 216, 240, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0c0e12;
+  color: #a8d8f0;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -207,7 +201,7 @@
 }
 
 .post-author-info p {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.85rem;
 }
 
@@ -239,18 +233,18 @@
 }
 
 .post-action:hover {
-  color: #e0c090;
+  color: #a8d8f0;
   transform: scale(1.05);
 }
 
 .post-action.reacted {
-  color: #ff6b6b;
+  color: #f0a8a8;
 }
 
 .loading-spinner {
   text-align: center;
   padding: 40px;
-  color: #d4a574;
+  color: #f0d8a8;
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
 }
@@ -263,7 +257,7 @@
 
 .empty-state h2 {
   font-family: 'Playfair Display', serif;
-  color: #d4a574;
+  color: #f0d8a8;
   margin-bottom: 10px;
   font-size: 1.8rem;
 }
@@ -288,8 +282,8 @@
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--accent, #ff6b6b) 0%, var(--accent-2, #a855f7) 100%);
-  color: white;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
 }
 
 .primary-btn:hover {
@@ -355,8 +349,8 @@
 .action-type {
   display: inline-block;
   padding: 0.35rem 0.75rem;
-  background: rgba(168, 85, 247, 0.15);
-  color: var(--accent-2, #a855f7);
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -364,7 +358,7 @@
 }
 
 .action-effort {
-  color: var(--text-secondary, #b0b0b0);
+  color: #b0b0b0;
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -388,15 +382,12 @@
 }
 
 .user {
-  color: var(--text-secondary, #b0b0b0);
+  color: #b0b0b0;
   font-weight: 500;
 }
 
 .points {
-  background: linear-gradient(135deg, var(--accent, #ff6b6b) 0%, var(--accent-2, #a855f7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   font-weight: 600;
 }
 
@@ -451,18 +442,18 @@
 
 .react-btn {
   border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--accent, #ff6b6b);
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
 }
 .react-btn:hover {
-  background: rgba(255, 107, 107, 0.18);
+  background: rgba(168, 216, 240, 0.25);
 }
 .react-btn.reacted {
-  color: var(--accent-2, #a855f7);
+  color: #a8d8f0;
 }
 
 .react-floating {
@@ -475,8 +466,8 @@
 .feedback-badge {
   display: inline-block;
   padding: 0.35rem 0.75rem;
-  background: rgba(255, 107, 107, 0.15);
-  color: var(--accent, #ff6b6b);
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 500;
