@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import api from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 import '../styles/ActionCreate.css';
 
 function ActionCreatePage({ user, onLogout }) {
@@ -114,7 +113,6 @@ function ActionCreatePage({ user, onLogout }) {
 
   return (
     <div className="action-create-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="action-create-header">
         <h1>Create Action {spaceName ? `in ${spaceName}` : ''}</h1>
         <button className="create-cancel-btn" onClick={() => navigate(-1)} disabled={loading}>

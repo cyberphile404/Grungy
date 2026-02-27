@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/CreateHobbySpace.css';
 import api from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 
 export default function EditHobbySpace({ user, onLogout }) {
   const { spaceId } = useParams();
@@ -136,7 +135,6 @@ export default function EditHobbySpace({ user, onLogout }) {
 
   return (
     <div className="create-hobby-space-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="create-form-card glass">
         <h1 className="gradient-text">Edit Hobby Space</h1>
         <p className="subtitle">Update your community settings</p>

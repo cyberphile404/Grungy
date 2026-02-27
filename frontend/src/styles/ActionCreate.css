@@ -1,7 +1,8 @@
 /* Action Create page styles */
 .action-create-container {
-  min-height: 100vh;
-  padding: 24px;
+  padding: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .action-create-header {

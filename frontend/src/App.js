@@ -12,6 +12,7 @@ import HobbySpaceDetailPage from './pages/HobbySpaceDetailPage';
 import CreateHobbySpace from './pages/CreateHobbySpace';
 import EditHobbySpace from './pages/EditHobbySpace';
 import PointsAnalyticsPage from './pages/PointsAnalyticsPage';
+import AppLayout from './components/AppLayout';
 import './App.css';
 
 function App() {
@@ -109,6 +110,16 @@ function App() {
     return <div className="loading">Loading...</div>;
   }
 
+  // Helper: wrap authenticated page in two-column AppLayout
+  const protect = (element) =>
+    isAuthenticated ? (
+      <AppLayout user={user} onLogout={handleLogout}>
+        {element}
+      </AppLayout>
+    ) : (
+      <Navigate to="/auth" />
+    );
+
   return (
     <Router>
       <Routes>
@@ -116,94 +127,17 @@ function App() {
           path="/auth"
           element={!isAuthenticated ? <LoginPage onLogin={handleLogin} /> : <Navigate to="/" />}
         />
-        <Route
-          path="/"
-          element={isAuthenticated ? (
-            <HomePage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/search"
-          element={isAuthenticated ? (
-            <SearchPage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/profile/edit"
-          element={isAuthenticated ? (
-            <ProfileEditPage user={user} onUpdateProfile={handleUpdateProfile} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/profile/:userId"
-          element={isAuthenticated ? (
-            <ProfilePage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/post/create"
-          element={isAuthenticated ? (
-            <PostCreatePage user={user} onPostCreated={handlePostCreated} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/hobby-spaces"
-          element={isAuthenticated ? (
-            <HobbySpaceListPage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/hobby-space/create"
-          element={isAuthenticated ? (
-            <CreateHobbySpace user={user} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/hobby-space/:spaceId"
-          element={isAuthenticated ? (
-            <HobbySpaceDetailPage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/hobby-space/:spaceId/edit"
-          element={isAuthenticated ? (
-            <EditHobbySpace user={user} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/action/create"
-          element={isAuthenticated ? (
-            <ActionCreatePage user={user} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
-        <Route
-          path="/points-analytics"
-          element={isAuthenticated ? (
-            <PointsAnalyticsPage user={user} onLogout={handleLogout} />
-          ) : (
-            <Navigate to="/auth" />
-          )}
-        />
+        <Route path="/" element={protect(<HomePage user={user} onLogout={handleLogout} />)} />
+        <Route path="/search" element={protect(<SearchPage user={user} onLogout={handleLogout} />)} />
+        <Route path="/profile/edit" element={protect(<ProfileEditPage user={user} onUpdateProfile={handleUpdateProfile} />)} />
+        <Route path="/profile/:userId" element={protect(<ProfilePage user={user} onLogout={handleLogout} />)} />
+        <Route path="/post/create" element={protect(<PostCreatePage user={user} onPostCreated={handlePostCreated} />)} />
+        <Route path="/hobby-spaces" element={protect(<HobbySpaceListPage user={user} onLogout={handleLogout} />)} />
+        <Route path="/hobby-space/create" element={protect(<CreateHobbySpace user={user} />)} />
+        <Route path="/hobby-space/:spaceId" element={protect(<HobbySpaceDetailPage user={user} onLogout={handleLogout} />)} />
+        <Route path="/hobby-space/:spaceId/edit" element={protect(<EditHobbySpace user={user} />)} />
+        <Route path="/action/create" element={protect(<ActionCreatePage user={user} />)} />
+        <Route path="/points-analytics" element={protect(<PointsAnalyticsPage user={user} onLogout={handleLogout} />)} />
       </Routes>
     </Router>
   );

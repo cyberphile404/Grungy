@@ -12,22 +12,9 @@
 .hobby-space-list-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 32px 40px;
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(26, 13, 38, 0.5) 0%, rgba(13, 26, 38, 0.5) 100%);
-}
-
-.hobby-space-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: #0a0a0a;
 }
 
 .header-content h1 {

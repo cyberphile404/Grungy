@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HeaderBar from '../components/HeaderBar';
 import '../styles/HobbySpaceListPage.css';
 import api from '../services/api';
 
@@ -83,7 +82,6 @@ export default function HobbySpaceListPage({ user, onLogout }) {
 
   return (
     <div className="hobby-space-list-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="hobby-space-header">
         <div className="header-content">
           <h1 className="gradient-text">Hobby Spaces</h1>
