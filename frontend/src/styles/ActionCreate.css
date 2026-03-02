@@ -1,7 +1,8 @@
 /* Action Create page styles */
 .action-create-container {
-  min-height: 100vh;
-  padding: 24px;
+  padding: 32px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .action-create-header {
@@ -13,10 +14,10 @@
 
 .action-create-header h1 {
   font-family: 'Playfair Display', serif;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f5f5f5;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
 }
 
 .create-cancel-btn {
@@ -51,8 +52,8 @@
 }
 
 .type-btn.active {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0c0e12;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   font-weight: 700;
 }
 
@@ -73,7 +74,7 @@
   position: absolute;
   right: 12px;
   bottom: -22px;
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.85rem;
 }
 
@@ -99,8 +100,8 @@
 }
 
 .submit-action-btn {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0c0e12;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
 }
 
 .media-previews {

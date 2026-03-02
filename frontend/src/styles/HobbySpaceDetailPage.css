@@ -10,41 +10,26 @@
 }
 
 .hobby-space-detail-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 32px 40px;
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(26, 13, 38, 0.5) 0%, rgba(13, 26, 38, 0.5) 100%);
-}
-
-.space-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  background: #0a0a0a;
 }
 
 .header-content h1 {
   margin: 0 0 0.5rem 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #f5f5f5;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.6px;
 }
 
 .slug {
   display: inline-block;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
@@ -52,8 +37,8 @@
 .header-content .description {
   margin: 0.75rem 0 0 0;
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.7;
   max-width: 600px;
 }
 
@@ -69,45 +54,47 @@
 .join-btn,
 .leave-btn,
 .edit-space-btn {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.75rem;
   border: none;
   border-radius: var(--radius);
-  font-weight: 600;
-  font-size: 0.95rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.4px;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
 }
 
 .create-action-btn {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  color: white;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
 }
 
 .create-action-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.2);
 }
 
 .join-btn,
 .home-btn {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  color: white;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
 }
 
 .join-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.2);
 }
 
 .leave-btn {
-  background: rgba(168, 85, 247, 0.1);
-  color: var(--accent-2);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: rgba(216, 168, 240, 0.1);
+  color: #d8a8f0;
+  border: 1px solid rgba(216, 168, 240, 0.3);
 }
 
 .leave-btn:hover {
-  background: rgba(168, 85, 247, 0.2);
+  background: rgba(216, 168, 240, 0.2);
 }
 
 .edit-space-btn {
@@ -135,7 +122,7 @@
 }
 
 .sidebar-card {
-  padding: 1.5rem;
+  padding: 2rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
@@ -145,8 +132,10 @@
 .sidebar-card h3 {
   margin: 0 0 1rem 0;
   color: var(--text-primary);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.6px;
 }
 
 .stats-list,
@@ -172,17 +161,13 @@
 
 .label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .value {
-  color: var(--text-primary);
+  color: #a8d8f0;
   font-weight: 600;
-  font-size: 1rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.1rem;
 }
 
 .valid-actions {
@@ -210,6 +195,8 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.4px;
 }
 .action-delete-btn:hover {
   background: rgba(255, 107, 107, 0.18);
@@ -217,8 +204,8 @@
 .action-tag {
   display: inline-block;
   padding: 0.35rem 0.75rem;
-  background: rgba(255, 107, 107, 0.15);
-  color: var(--accent);
+  background: rgba(240, 168, 168, 0.15);
+  color: #f0a8a8;
   border-radius: 6px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -233,48 +220,55 @@
 .space-main h2 {
   margin: 0;
   color: var(--text-primary);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.6px;
 }
 
 .actions-feed {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 18px;
 }
 
 .action-card {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   position: relative;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .action-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 107, 107, 0.3);
-  transform: translateX(5px);
+  border-color: rgba(168, 216, 240, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .action-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  gap: 12px;
 }
 
 .action-user {
   display: inline-block;
-  padding: 0.35rem 0.75rem;
-  background: rgba(176, 176, 176, 0.2);
+  padding: 0.4rem 0.9rem;
+  background: rgba(176, 176, 176, 0.15);
   color: #ffffff;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
@@ -315,18 +309,20 @@
 
 .react-btn {
   border: none;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--accent);
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.4px;
 }
 .react-btn:hover {
-  background: rgba(255, 107, 107, 0.18);
+  background: rgba(168, 216, 240, 0.25);
 }
 .react-btn.reacted {
-  color: var(--accent-2);
+  color: #a8d8f0;
 }
 
 .react-floating {
@@ -372,10 +368,8 @@
 }
 
 .points {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: transparent;
+  color: #a8d8f0;
   font-weight: 600;
 }
 
@@ -388,7 +382,7 @@
 }
 
 .feedback-count {
-  color: var(--accent);
+  color: #a8d8f0;
   font-weight: 500;
 }
 

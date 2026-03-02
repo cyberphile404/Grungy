@@ -1,28 +1,13 @@
 .profile-container {
   min-height: 100vh;
-  padding: 28px 18px 48px;
+  padding: 32px 40px 48px;
   color: var(--text);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 14px;
-  max-width: 1100px;
-  margin: 0 auto 28px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.profile-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.3rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.01em;
+  display: none;
 }
 
 .header-buttons {
@@ -33,14 +18,15 @@
 .back-button,
 .action-button {
   border: 1px solid var(--border);
-  background: linear-gradient(120deg, rgba(224, 123, 114, 0.9), rgba(107, 94, 219, 0.88));
-  color: #0c0e12;
+  background: rgba(168, 216, 240, 0.15);
+  color: #a8d8f0;
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 13px 22px;
   cursor: pointer;
   font-weight: 700;
+  font-size: 1rem;
   transition: all 0.2s ease;
-  box-shadow: 0 10px 22px rgba(107, 94, 219, 0.18);
+  box-shadow: 0 10px 22px rgba(168, 216, 240, 0.08);
 }
 
 .back-button:hover,
@@ -67,17 +53,17 @@
 }
 
 .profile-content {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 28px;
 }
 
 .profile-card {
   position: relative;
   overflow: hidden;
-  padding: 32px;
+  padding: 48px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -101,16 +87,16 @@
 }
 
 .profile-avatar-large {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: rgba(168, 216, 240, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.6rem;
-  margin: 0 auto 16px;
-  color: #0c0e12;
+  font-size: 3rem;
+  margin: 0 auto 20px;
+  color: #a8d8f0;
   font-weight: 800;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
   overflow: hidden;
@@ -124,8 +110,8 @@
 
 .profile-banner {
   width: calc(100% + 64px);
-  margin: -32px -32px 16px -32px;
-  height: 200px;
+  margin: -32px -32px 20px -32px;
+  height: 240px;
   overflow: hidden;
   border-radius: 12px 12px 0 0;
 }
@@ -138,57 +124,59 @@
 
 .profile-card h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.9rem;
+  font-size: 2.4rem;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  font-weight: 900;
+  letter-spacing: 0.6px;
 }
 
 .profile-card .email {
-  color: var(--muted);
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+  color: #b0b0b0;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
 }
 
 .profile-card .bio {
   color: var(--text);
   margin-bottom: 18px;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.7;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 14px 18px;
 }
 
 .profile-card .pronouns {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 6px;
+  color: #b0b0b0;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
 }
 
 .profile-card .location,
 .profile-card .website {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 6px;
+  color: #b0b0b0;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
 }
 
 .profile-card .website a {
-  color: var(--accent);
+  color: #a8d8f0;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .profile-card .website a:hover {
-  color: var(--accent-2);
+  color: #d8a8f0;
 }
 
 .profile-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  padding: 16px;
-  margin: 18px 0;
+  gap: 16px;
+  padding: 22px;
+  margin: 22px 0;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.03);
@@ -199,17 +187,14 @@
 }
 
 .stat-number {
-  font-size: 1.4rem;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.7rem;
+  color: #a8d8f0;
   font-weight: 800;
 }
 
 .stat-label {
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: #b0b0b0;
+  font-size: 1rem;
 }
 
 .profile-actions {
@@ -221,8 +206,8 @@
 }
 
 .profile-posts {
-  margin-top: 16px;
-  padding: 22px;
+  margin-top: 20px;
+  padding: 28px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
@@ -231,22 +216,22 @@
 
 .profile-posts h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .posts-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 22px;
 }
 
 .post-card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px;
+  padding: 24px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
@@ -267,24 +252,24 @@
   font-family: 'Playfair Display', serif;
   color: var(--text);
   margin-bottom: 4px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
 }
 
 .post-author-info p {
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: #b0b0b0;
+  font-size: 1rem;
 }
 
 .post-delete-btn {
-  background: linear-gradient(120deg, rgba(235, 115, 115, 0.9), rgba(197, 82, 82, 0.88));
-  color: #fff;
+  background: rgba(240, 168, 168, 0.15);
+  color: #f0a8a8;
   padding: 6px 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 22px rgba(235, 115, 115, 0.2);
+  box-shadow: 0 10px 22px rgba(240, 168, 168, 0.1);
 }
 
 .post-delete-btn:hover {
@@ -310,30 +295,30 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  color: var(--accent);
+  color: #a8d8f0;
   transition: transform 0.15s ease, color 0.15s ease;
   font-weight: 700;
 }
 
 .post-action:hover {
-  color: var(--accent-2);
+  color: #d8a8f0;
   transform: translateY(-1px);
 }
 
 .post-action.reacted {
-  color: #ff8b8b;
+  color: #d8a8f0;
 }
 
 .loading-spinner {
   text-align: center;
   padding: 40px;
-  color: var(--accent);
+  color: #a8d8f0;
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
 }
 
 .error-message {
-  color: #ff8b8b;
+  color: #f0a8a8;
   margin-top: 10px;
   text-align: center;
 }
@@ -396,17 +381,14 @@
 }
 
 .action-type {
-  background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a8d8f0;
   font-weight: 700;
   font-size: 0.95rem;
   text-transform: capitalize;
 }
 
 .hobby-space {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.9rem;
   padding: 4px 10px;
   background: rgba(255, 255, 255, 0.05);
@@ -414,13 +396,13 @@
 }
 
 .effort-score {
-  color: var(--accent-2);
+  color: #d8a8f0;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
 .points {
-  color: var(--accent);
+  color: #a8d8f0;
   font-size: 0.9rem;
   font-weight: 700;
 }
@@ -433,7 +415,7 @@
 }
 
 .action-date {
-  color: var(--muted);
+  color: #b0b0b0;
   font-size: 0.85rem;
   margin-top: 8px;
 }

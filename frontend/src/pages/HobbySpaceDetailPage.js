@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/HobbySpaceDetailPage.css';
 import api from '../services/api';
 import { actionsAPI } from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 
 export default function HobbySpaceDetailPage({ user, onLogout }) {
   const { spaceId } = useParams();
@@ -114,7 +113,6 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
 
   return (
     <div className="hobby-space-detail-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="space-header glass">
         <div className="header-content">
           <h1 className="gradient-text">{space.name}</h1>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authAPI } from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 import '../styles/SearchPage.css';
 
 function SearchPage({ user, onLogout }) {
@@ -35,7 +34,6 @@ function SearchPage({ user, onLogout }) {
 
   return (
     <div className="search-container">
-      <HeaderBar user={user} onLogout={onLogout} hideSettingsLogout />
 
       <div className="search-content">
         <div className="search-form-container">

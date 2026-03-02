@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/CreateHobbySpace.css';
 import api from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 
 export default function CreateHobbySpace({ user, onLogout }) {
   const navigate = useNavigate();
@@ -72,7 +71,6 @@ export default function CreateHobbySpace({ user, onLogout }) {
 
   return (
     <div className="create-hobby-space-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="create-form-card glass">
         <h1 className="gradient-text">Create New Hobby Space</h1>
         <p className="subtitle">Build a community around your passion</p>

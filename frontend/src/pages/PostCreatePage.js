@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postsAPI } from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 import '../styles/PostCreate.css';
 
 function PostCreatePage({ user, onPostCreated, onLogout }) {
@@ -85,7 +84,6 @@ function PostCreatePage({ user, onPostCreated, onLogout }) {
 
   return (
     <div className="post-create-container">
-      <HeaderBar user={user} onLogout={onLogout} />
       <div className="post-create-header">
         <h1>Create a Post</h1>
         <button

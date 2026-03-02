@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api, { actionsAPI } from '../services/api';
-import '../styles/SettingsMenu.css';
 import '../styles/HomePage.css';
 
 function HomePage({ user, onLogout }) {
@@ -11,7 +10,6 @@ function HomePage({ user, onLogout }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [view, setView] = useState('hobby-spaces'); // hobby-spaces | feed
-  const [showSettings, setShowSettings] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,8 +53,6 @@ function HomePage({ user, onLogout }) {
     }
   };
 
-  const toggleSettings = () => setShowSettings((s) => !s);
-
   const handleViewHobbySpace = (spaceId) => {
     navigate(`/hobby-space/${spaceId}`);
   };
@@ -73,61 +69,6 @@ function HomePage({ user, onLogout }) {
 
   return (
     <div className="home-container">
-      <div className="home-header">
-        <h1 className="gradient-header">Grungy</h1>
-        <div className="header-actions-right">
-          <div className="nav-buttons">
-            <button
-              className="nav-button"
-              onClick={() => navigate('/search')}
-            >
-              Search
-            </button>
-            <button
-              className="nav-button"
-              onClick={() => navigate('/points-analytics')}
-            >
-              📊 Analytics
-            </button>
-            <button
-              className="nav-button"
-              onClick={() => navigate(`/profile/${user.id}`)}
-            >
-              Profile
-            </button>
-          </div>
-          <div className="settings-trigger">
-            <button
-              className="settings-icon-btn"
-              onClick={toggleSettings}
-              title="Settings"
-              aria-label="Settings"
-            >
-              ⚙️
-            </button>
-            {showSettings && (
-              <div className="settings-popover">
-                <div className="settings-item">
-                  <div className="settings-title">Account</div>
-                </div>
-                <div className="settings-item">
-                  <div className="settings-title">Preferences</div>
-                </div>
-                <div className="settings-item">
-                  <div className="settings-title">Audience and visibility</div>
-                </div>
-                <div className="settings-item">
-                  <div className="settings-title">Your activity</div>
-                </div>
-                <div className="settings-item logout" onClick={onLogout}>
-                  <div className="settings-title">Logout</div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-
       <div className="home-content">
         <div className="view-switcher">
           <button

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { authAPI, actionsAPI } from '../services/api';
-import HeaderBar from '../components/HeaderBar';
 import '../styles/ProfilePage.css';
 import '../styles/SettingsMenu.css';
 
@@ -98,7 +97,6 @@ function ProfilePage({ user, onLogout }) {
 
   return (
     <div className="profile-container">
-      <HeaderBar user={user} onLogout={onLogout} />
 
       <div className="profile-content">
         {profileUser && (
