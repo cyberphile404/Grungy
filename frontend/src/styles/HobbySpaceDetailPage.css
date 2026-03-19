@@ -1,3 +1,45 @@
+/* Image Preview Modal Styles */
+.image-preview-modal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: background 0.2s;
+}
+
+.image-preview-modal-img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 16px;
+  box-shadow: 0 12px 48px 0 rgba(0,0,0,0.7);
+  background: #222;
+  position: relative;
+  z-index: 2147483648;
+  margin: auto;
+  display: block;
+}
+
+.image-preview-modal-close {
+  position: fixed;
+  top: 32px;
+  right: 48px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 2.5rem;
+  padding: 0.1em 0.6em 0.2em 0.6em;
+  cursor: pointer;
+  z-index: 2147483649;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  line-height: 1;
+}
 :root {
   --accent: #a8d8f0;
   --accent-2: #a8d8f0;
