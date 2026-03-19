@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import SearchPage from './pages/SearchPage';
+import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
-import SearchPage from './pages/SearchPage';
+
 import ProfileEditPage from './pages/ProfileEditPage';
 import PostCreatePage from './pages/PostCreatePage';
 import ActionCreatePage from './pages/ActionCreatePage';
-import HobbySpaceListPage from './pages/HobbySpaceListPage';
-import HobbySpaceDetailPage from './pages/HobbySpaceDetailPage';
-import CreateHobbySpace from './pages/CreateHobbySpace';
-import EditHobbySpace from './pages/EditHobbySpace';
 import PointsAnalyticsPage from './pages/PointsAnalyticsPage';
+
+
+import FollowersListPage from './pages/FollowersListPage';
+import FollowingListPage from './pages/FollowingListPage';
 import AppLayout from './components/AppLayout';
-import './App.css';
+import HobbySpaceListPage from './pages/HobbySpaceListPage';
+import CreateHobbySpace from './pages/CreateHobbySpace';
+import HobbySpaceDetailPage from './pages/HobbySpaceDetailPage';
+import EditHobbySpace from './pages/EditHobbySpace';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -131,6 +136,8 @@ function App() {
         <Route path="/search" element={protect(<SearchPage user={user} onLogout={handleLogout} />)} />
         <Route path="/profile/edit" element={protect(<ProfileEditPage user={user} onUpdateProfile={handleUpdateProfile} />)} />
         <Route path="/profile/:userId" element={protect(<ProfilePage user={user} onLogout={handleLogout} />)} />
+        <Route path="/profile/:userId/followers" element={protect(<FollowersListPage />)} />
+        <Route path="/profile/:userId/following" element={protect(<FollowingListPage />)} />
         <Route path="/post/create" element={protect(<PostCreatePage user={user} onPostCreated={handlePostCreated} />)} />
         <Route path="/hobby-spaces" element={protect(<HobbySpaceListPage user={user} onLogout={handleLogout} />)} />
         <Route path="/hobby-space/create" element={protect(<CreateHobbySpace user={user} />)} />

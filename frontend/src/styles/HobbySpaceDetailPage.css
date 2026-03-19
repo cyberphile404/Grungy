@@ -10,17 +10,31 @@
 }
 
 .hobby-space-detail-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 32px 40px;
+  padding: 2rem;
   min-height: 100vh;
   background: #0a0a0a;
 }
 
+.space-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(168, 216, 240, 0.10);
+  border: 1.5px solid #a8d8f0;
+}
+
 .header-content h1 {
   margin: 0 0 0.5rem 0;
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 2.6rem;
+  font-weight: 700;
   color: #f5f5f5;
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.6px;
@@ -28,25 +42,26 @@
 
 .slug {
   display: inline-block;
+  margin-bottom: 0.5rem;
   color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
 }
 
 .header-content .description {
   margin: 0.75rem 0 0 0;
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.7;
   max-width: 600px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 1.13rem;
 }
 
-.header-actions {
+.header-actions-vertical {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  align-items: stretch;
+  min-width: 180px;
 }
 
 .create-action-btn,
@@ -54,37 +69,31 @@
 .join-btn,
 .leave-btn,
 .edit-space-btn {
-  padding: 1rem 1.75rem;
-  border: none;
-  border-radius: var(--radius);
-  font-weight: 700;
-  font-size: 1.05rem;
-  font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 0.4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 0.75rem 1.5rem;
   white-space: nowrap;
-}
-
-.create-action-btn {
-  background: rgba(168, 216, 240, 0.15);
+  border: 1.5px solid #a8d8f0;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(168, 216, 240, 0.13);
   color: #a8d8f0;
+  box-shadow: 0 2px 8px rgba(168, 216, 240, 0.08);
 }
 
-.create-action-btn:hover {
+.create-action-btn:hover,
+.home-btn:hover,
+.join-btn:hover,
+.leave-btn:hover,
+.edit-space-btn:hover {
+  background: #a8d8f0;
+  color: #181818;
+  border-color: #a8d8f0;
+  box-shadow: 0 6px 18px rgba(168, 216, 240, 0.18);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.2);
-}
-
-.join-btn,
-.home-btn {
-  background: rgba(168, 216, 240, 0.15);
-  color: #a8d8f0;
-}
-
-.join-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.2);
 }
 
 .leave-btn {
@@ -95,6 +104,8 @@
 
 .leave-btn:hover {
   background: rgba(216, 168, 240, 0.2);
+  color: #d8a8f0;
+  border-color: rgba(216, 168, 240, 0.6);
 }
 
 .edit-space-btn {
@@ -122,17 +133,17 @@
 }
 
 .sidebar-card {
-  padding: 2rem;
+  padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--radius);
 }
 
 .sidebar-card h3 {
   margin: 0 0 1rem 0;
   color: var(--text-primary);
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-weight: 800;
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.6px;
@@ -150,8 +161,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.2rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius);
+  border: none;
+  font-size: 1.04rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.2s;
 }
 
 .stat-item:last-child,
@@ -188,10 +205,10 @@
 }
 
 .action-delete-btn {
+  padding: 6px 10px;
   border: none;
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-primary);
-  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -229,16 +246,16 @@
 .actions-feed {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1rem;
 }
 
 .action-card {
-  padding: 28px;
+  padding: 1.5rem;
+  position: relative;
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  position: relative;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -256,8 +273,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
   gap: 12px;
 }
@@ -308,19 +325,21 @@
 }
 
 .react-btn {
+  padding: 6px 10px;
   border: none;
   background: rgba(168, 216, 240, 0.15);
   color: #a8d8f0;
-  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.4px;
 }
+
 .react-btn:hover {
   background: rgba(168, 216, 240, 0.25);
 }
+
 .react-btn.reacted {
   color: #a8d8f0;
 }
@@ -340,13 +359,13 @@
 
 .action-content {
   margin: 0 0 1rem 0;
+  padding: 0.5rem 0;
   color: var(--text-primary);
   font-size: 0.95rem;
   line-height: 1.6;
   word-wrap: break-word;
   word-break: break-word;
   white-space: pre-wrap;
-  padding: 0.5rem 0;
 }
 
 .action-footer {

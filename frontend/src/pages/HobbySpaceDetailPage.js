@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/HobbySpaceDetailPage.css';
 import api from '../services/api';
 import { actionsAPI } from '../services/api';
+
 
 export default function HobbySpaceDetailPage({ user, onLogout }) {
   const { spaceId } = useParams();
@@ -13,12 +14,27 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
   const [isMember, setIsMember] = useState(false);
   const [loading, setLoading] = useState(true);
   const [analytics, setAnalytics] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef();
 
   useEffect(() => {
     fetchSpaceDetails();
     fetchSpaceActions();
     fetchAnalytics();
+    // eslint-disable-next-line
   }, [spaceId]);
+
+
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    }
+    if (menuOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [menuOpen]);
 
   const fetchSpaceDetails = async () => {
     try {
@@ -107,25 +123,21 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
     }
   };
 
+
+
   if (loading || !space) {
     return <div className="loading">Loading hobby space...</div>;
   }
 
   return (
     <div className="hobby-space-detail-container">
-      <div className="space-header glass">
+      <div className="space-header glass" style={{display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2.5rem'}}>
         <div className="header-content">
           <h1 className="gradient-text">{space.name}</h1>
           <p className="slug">#{space.slug}</p>
           {space.description && <p className="description">{space.description}</p>}
         </div>
-
-        <div className="header-actions">
-          {space.createdBy?._id === user.id && (
-            <button className="edit-space-btn" onClick={() => navigate(`/hobby-space/${spaceId}/edit`)}>
-              ✏️ Edit Space
-            </button>
-          )}
+        <div className="header-actions-vertical">
           {isMember ? (
             <>
               <button className="create-action-btn" onClick={handleCreateAction}>
@@ -134,6 +146,11 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
               <button className="leave-btn" onClick={handleLeave}>
                 Leave Space
               </button>
+              {space.createdBy?._id === user.id && (
+                <button className="edit-space-btn" onClick={() => navigate(`/hobby-space/${spaceId}/edit`)}>
+                  ✏️ Edit Space
+                </button>
+              )}
             </>
           ) : (
             <button className="join-btn" onClick={handleJoin}>
