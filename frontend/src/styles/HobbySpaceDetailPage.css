@@ -643,6 +643,20 @@
   margin-bottom: 12px;
 }
 
+.ai-flag-notice {
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  color: #ffb74d;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: help;
+}
+
 .comment-user {
   display: flex;
   align-items: center;

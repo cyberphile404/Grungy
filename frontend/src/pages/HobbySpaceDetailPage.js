@@ -23,6 +23,7 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [feedFilter, setFeedFilter] = useState('all'); // 'all' or 'mine'
   const menuRef = useRef();
+  const [showAlertModal, setShowAlertModal] = useState(false);
 
   useEffect(() => {
     fetchSpaceDetails();
@@ -172,7 +173,7 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
   };
 
   const filteredActions = feedFilter === 'mine' 
-    ? actions.filter(a => a.user?._id === user.id)
+    ? actions.filter(a => (a.user?._id || a.user?.id) === user.id)
     : actions;
 
 
@@ -312,7 +313,7 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
           ) : (
             <div className="actions-feed">
               {filteredActions.map((action) => (
-                <div id={action._id} key={action._id} className="action-card glass">
+                <div id={action._id} key={action._id} className="action-card glass" style={{position: 'relative'}}>
                   <div className="action-header">
                     <button 
                       className="action-user"
@@ -322,6 +323,7 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
                       {action.user?.username || 'Anonymous'}
                     </button>
                     <div className="action-header-right">
+                      {/* AI flag/verificationReason removed */}
                       {action.actionType !== 'poll' && action.actionType !== 'qna' && (
                         <span className="effort-score">Effort: {action.effortScore}</span>
                       )}
@@ -362,7 +364,7 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
                     </div>
                   </div>
 
-                  <div className="action-content">
+                  <div className="action-content" style={{position: 'relative'}}>
                     {action.actionType === 'poll' ? (
                       <div className="poll-display">
                         {action.content && <p className="poll-context">{action.content}</p>}
@@ -406,6 +408,73 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
                       </div>
                     ) : (
                       <p>{action.content}</p>
+                    )}
+                    {action.verificationReason && action.relevanceScore < 0.7 && (
+                      <>
+                        <div
+                          style={{
+                            position: 'absolute',
+                            bottom: 8,
+                            right: 8,
+                            zIndex: 100,
+                            background: 'transparent',
+                            color: '#ff4b4b',
+                            borderRadius: '50%',
+                            width: 24,
+                            height: 24,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            fontSize: '1.2rem',
+                            border: 'none',
+                            boxShadow: 'none',
+                            padding: 0,
+                          }}
+                          onClick={() => setShowAlertModal(action._id)}
+                        >
+                          <span role="img" aria-label="alert">⚠️</span>
+                        </div>
+                        {showAlertModal === action._id && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              bottom: 56,
+                              right: 8,
+                              zIndex: 110,
+                              background: 'rgba(20, 20, 20, 0.95)',
+                              backdropFilter: 'blur(20px)',
+                              border: '1px solid rgba(255, 255, 255, 0.15)',
+                              borderRadius: 16,
+                              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.6)',
+                              padding: '1rem',
+                              minWidth: 320,
+                              maxWidth: 420,
+                              color: '#fff',
+                              fontSize: '1.05rem',
+                              fontWeight: 500,
+                              textAlign: 'center',
+                            }}
+                          >
+                            <span role="img" aria-label="alert" style={{fontSize: '2.2rem', marginBottom: 12}}>⚠️</span>
+                            <div style={{margin: '18px 0'}}>{action.verificationReason}</div>
+                            <button
+                              style={{
+                                marginTop: 16,
+                                padding: '8px 18px',
+                                borderRadius: 8,
+                                border: 'none',
+                                background: '#888',
+                                color: '#fff',
+                                fontWeight: 700,
+                                fontSize: '1rem',
+                                cursor: 'pointer',
+                              }}
+                              onClick={() => setShowAlertModal(false)}
+                            >Close</button>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
 
@@ -522,9 +591,85 @@ export default function HobbySpaceDetailPage({ user, onLogout }) {
               ))}
             </div>
           )}
-          {actionsError && <div className="error-message">{actionsError}</div>}
         </div>
       </div>
+
+      {/* Alert icon at rightmost bottom of each flagged action card, modal on click */}
+      {actionsError && (
+        <>
+          {filteredActions.map((action) => (
+            <>
+              {action.verificationReason && action.relevanceScore < 0.7 && (
+                <>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: 8,
+                      right: 8,
+                      zIndex: 100,
+                      background: 'transparent',
+                      color: '#ff4b4b',
+                      borderRadius: '50%',
+                      width: 24,
+                      height: 24,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      fontSize: '1.2rem',
+                      border: 'none',
+                      boxShadow: 'none',
+                      padding: 0,
+                    }}
+                    onClick={() => setShowAlertModal(action._id)}
+                  >
+                    <span role="img" aria-label="alert">⚠️</span>
+                  </div>
+                  {showAlertModal === action._id && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: 56,
+                        right: 8,
+                        zIndex: 110,
+                        background: 'rgba(20, 20, 20, 0.95)',
+                        backdropFilter: 'blur(20px)',
+                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        borderRadius: 16,
+                        boxShadow: '0 12px 40px rgba(0, 0, 0, 0.6)',
+                        padding: '1rem',
+                        minWidth: 320,
+                        maxWidth: 420,
+                        color: '#fff',
+                        fontSize: '1.05rem',
+                        fontWeight: 500,
+                        textAlign: 'center',
+                      }}
+                    >
+                      <span role="img" aria-label="alert" style={{fontSize: '2.2rem', marginBottom: 12}}>⚠️</span>
+                      <div style={{margin: '18px 0'}}>{action.verificationReason}</div>
+                      <button
+                        style={{
+                          marginTop: 16,
+                          padding: '8px 18px',
+                          borderRadius: 8,
+                          border: 'none',
+                          background: '#888',
+                          color: '#fff',
+                          fontWeight: 700,
+                          fontSize: '1rem',
+                          cursor: 'pointer',
+                        }}
+                        onClick={() => setShowAlertModal(false)}
+                      >Close</button>
+                    </div>
+                  )}
+                </>
+              )}
+            </>
+          ))}
+        </>
+      )}
     </div>
   );
 }

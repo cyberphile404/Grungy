@@ -10,11 +10,11 @@ function ActionCreatePage({ user, onLogout }) {
   const hobbySpaceId = params.get('hobbySpace');
 
   const [actionType, setActionType] = useState('post');
+  const [allowedActionTypes, setAllowedActionTypes] = useState(['post', 'log', 'upload', 'reflect']);
   const [content, setContent] = useState('');
   const [mediaFiles, setMediaFiles] = useState([]);
   const [mediaPreviews, setMediaPreviews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [spaceName, setSpaceName] = useState('');
   const [revisingAction, setRevisingAction] = useState(null);
   const revisionId = params.get('revisionOf');
@@ -26,12 +26,15 @@ function ActionCreatePage({ user, onLogout }) {
   const [question, setQuestion] = useState('');
 
   useEffect(() => {
-    // Fetch space name for context
+    // Fetch space name and allowed actions for context
     const fetchSpace = async () => {
       try {
         if (!hobbySpaceId) return;
         const res = await api.get(`/hobby-spaces/${hobbySpaceId}`);
         setSpaceName(res.data?.name || '');
+        if (res.data?.actionConfig?.validActions) {
+          setAllowedActionTypes(res.data.actionConfig.validActions);
+        }
       } catch (e) {
         // ignore
       }
@@ -63,7 +66,6 @@ function ActionCreatePage({ user, onLogout }) {
     const files = Array.from(e.target.files);
 
     if (mediaFiles.length + files.length > 10) {
-      setError('Maximum 10 files allowed');
       return;
     }
 
@@ -88,24 +90,19 @@ function ActionCreatePage({ user, onLogout }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
 
     if (!hobbySpaceId) {
-      setError('Missing hobby space');
       return;
     }
 
     // Validate minimal content or media for 'post'
     if (actionType === 'poll' && (pollOptions.filter(o => o.trim()).length < 2)) {
-      setError('A poll must have at least 2 options');
       return;
     }
     if (actionType === 'qna' && !question.trim()) {
-      setError('Please enter a question for your QnA');
       return;
     }
     if (actionType !== 'poll' && actionType !== 'qna' && !content.trim() && mediaFiles.length === 0) {
-      setError('Add some text or attach media');
       return;
     }
 
@@ -151,7 +148,6 @@ function ActionCreatePage({ user, onLogout }) {
       navigate(`/hobby-space/${hobbySpaceId}`);
     } catch (err) {
       console.error('Error creating action:', err.response?.data || err.message);
-      setError(err.response?.data?.message || 'Failed to create action');
     } finally {
       setLoading(false);
     }
@@ -166,7 +162,6 @@ function ActionCreatePage({ user, onLogout }) {
         </button>
       </div>
 
-      {error && <div className="error-message">{error}</div>}
 
       {revisingAction && (
         <div className="revising-context-banner glass">
@@ -180,7 +175,7 @@ function ActionCreatePage({ user, onLogout }) {
 
       <form onSubmit={handleSubmit} className="action-create-form">
         <div className="action-type-selector">
-          {actionType !== 'poll' && actionType !== 'qna' && ['post', 'log', 'upload', 'reflect'].map((type) => (
+          {actionType !== 'poll' && actionType !== 'qna' && allowedActionTypes.map((type) => (
             <button
               key={type}
               type="button"

@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const Action = require('../models/Action');
 const User = require('../models/User');
+const Streak = require('../models/Streak');
 const HobbySpace = require('../models/HobbySpace');
 const Notification = require('../models/Notification');
 const PointRecord = require('../models/PointRecord');
 const progressService = require('../services/progressService');
 const streakService = require('../services/streakService');
 const badgeService = require('../services/badgeService');
+const contentVerificationService = require('../services/contentVerificationService');
 const path = require('path');
 const fs = require('fs');
 
@@ -203,10 +205,33 @@ exports.createAction = async (req, res) => {
 
     const action = new Action(actionObj);
 
-    // Calculate effort score
+    // Calculate initial effort score
     action.effortScore = calculateEffortScore(action, hobbySpace.actionConfig);
 
-    // Calculate points (respect caps)
+    // AI Content Relevance Verification (Skip for poll/qna)
+    if (actionType !== 'poll' && actionType !== 'qna') {
+      try {
+        console.log(`[AI] Verifying content for ${hobbySpace.name}...`);
+        const aiResult = await contentVerificationService.verifyContent(content, mediaUrls, {
+          name: hobbySpace.name,
+          description: hobbySpace.description
+        });
+        
+        action.isRelevant = aiResult.isRelevant;
+        action.relevanceScore = aiResult.relevanceScore;
+        action.verificationReason = aiResult.reason;
+        
+        // Penalize effort score based on relevance (e.g. 0.2 relevance = 80% reduction)
+        if (!action.isRelevant || action.relevanceScore < 0.7) {
+          console.log(`[AI MODERATION] Scaling effort score by ${action.relevanceScore} due to relevance.`);
+          action.effortScore = Math.floor(action.effortScore * action.relevanceScore);
+        }
+      } catch (aiErr) {
+        console.error('AI Verification Error (continuing with default):', aiErr.message);
+      }
+    }
+
+    // Calculate points based on (potentially AI-adjusted) effort score
     const dailyActions = await Action.find({
       user: userId,
       hobbySpace: hobbySpaceId,
@@ -214,7 +239,7 @@ exports.createAction = async (req, res) => {
     });
 
     const dailyPoints = dailyActions.reduce((sum, a) => sum + a.pointsAwarded, 0);
-    action.pointsAwarded = Math.min(action.effortScore, hobbySpace.actionConfig.dailyPointCap - dailyPoints);
+    action.pointsAwarded = Math.max(0, Math.min(action.effortScore, hobbySpace.actionConfig.dailyPointCap - dailyPoints));
 
     console.log('Saving action with mediaUrls:', mediaUrls);
     console.log('Action object before save:', {
@@ -620,10 +645,7 @@ exports.voteInPoll = async (req, res) => {
     const userId = req.user.id;
 
     const action = await Action.findById(actionId);
-    if (!action || action.actionType !== 'poll') {
-      return res.status(404).json({ message: 'Poll not found' });
-    }
-
+      const PointRecord = require('../models/PointRecord');
     // Check if user already voted in ANY option of this poll
     let alreadyVoted = false;
     action.pollOptions.forEach(opt => {
@@ -643,10 +665,10 @@ exports.voteInPoll = async (req, res) => {
     action.pollOptions[optionIndex].votes.push(userId);
     await action.save();
 
-    res.json(action);
+    res.json({ message: 'Vote recorded', action });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error voting in poll' });
+    res.status(500).json({ message: 'Error voting in poll', error: error.message });
   }
 };
 
@@ -663,8 +685,7 @@ async function updateStreak(userId, hobbySpaceId) {
         isActive: true,
       });
     }
-
-    // Add action to current window
+              // Removed erroneous lines to ensure correct try/catch structure
     streak.actionsInCurrentWindow.push({
       actionId: null, // we'd set this in a real scenario
       date: new Date(),

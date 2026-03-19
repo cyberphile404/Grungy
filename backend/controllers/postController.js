@@ -146,8 +146,15 @@ exports.deletePost = async (req, res) => {
       await Promise.all(deletePromises);
     }
 
-    await Post.findByIdAndDelete(postId);
-    res.json({ message: 'Post deleted' });
+      // Delete all point records related to this post
+      const PointRecord = require('../models/PointRecord');
+      await PointRecord.deleteMany({ relatedAction: postId });
+
+      // Remove all comments and reactions (if stored elsewhere, add logic)
+      // If comments are embedded, they are deleted with the post
+
+      await Post.findByIdAndDelete(postId);
+      res.json({ message: 'Post deleted, points removed' });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }

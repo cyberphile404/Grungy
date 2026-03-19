@@ -96,6 +96,16 @@ const ActionSchema = new mongoose.Schema(
       enum: ['public', 'private', 'hobbyspace-only'],
       default: 'public',
     },
+    // AI Content Verification
+    isRelevant: {
+      type: Boolean,
+      default: true,
+    },
+    relevanceScore: {
+      type: Number,
+      default: 1.0,
+    },
+    verificationReason: String,
   },
   { timestamps: true }
 );
