@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { authAPI, actionsAPI } from '../services/api';
 import '../styles/ProfilePage.css';
 import '../styles/SettingsMenu.css';
+import '../styles/SearchPage.css';
 
 function ProfilePage({ user, onLogout }) {
   const { userId } = useParams();
@@ -13,7 +15,6 @@ function ProfilePage({ user, onLogout }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followLoading, setFollowLoading] = useState(false);
   const navigate = useNavigate();
-
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to log out?')) {
       onLogout();
@@ -25,11 +26,8 @@ function ProfilePage({ user, onLogout }) {
     if (userId) {
       loadProfileData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
-
-  const handleProfileUpdated = () => {
-    fetchUserProfile();
-  };
 
   const loadProfileData = async () => {
     try {
@@ -131,15 +129,16 @@ function ProfilePage({ user, onLogout }) {
                 <div className="stat-number">{userActions.length}</div>
                 <div className="stat-label">Actions</div>
               </div>
-              <div className="stat">
+              <div className="stat clickable" onClick={() => navigate(`/profile/${profileUser._id || profileUser.id}/followers`)}>
                 <div className="stat-number">{profileUser.followers?.length || 0}</div>
                 <div className="stat-label">Followers</div>
               </div>
-              <div className="stat">
+              <div className="stat clickable" onClick={() => navigate(`/profile/${profileUser._id || profileUser.id}/following`)}>
                 <div className="stat-number">{profileUser.following?.length || 0}</div>
                 <div className="stat-label">Following</div>
               </div>
             </div>
+
 
             {userId === user.id && (
               <div className="profile-actions">
@@ -190,6 +189,9 @@ function ProfilePage({ user, onLogout }) {
                     <span className="hobby-space">{action.hobbySpace?.name}</span>
                     <span className="effort-score">Effort: {action.effortScore}</span>
                     <span className="points">{action.pointsAwarded} pts</span>
+                    {action.isRevision && (
+                      <span className="revision-tag" style={{ marginLeft: '8px' }}>Revision</span>
+                    )}
                   </div>
                   <p className="action-content">{action.content}</p>
                   <p className="action-date">{new Date(action.createdAt).toLocaleDateString()}</p>

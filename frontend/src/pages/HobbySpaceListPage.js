@@ -92,6 +92,9 @@ export default function HobbySpaceListPage({ user, onLogout }) {
         </button>
       </div>
 
+      {/* Add spacing between Create Space button and search */}
+      <div style={{ height: 32 }} />
+
       <div className="hobby-space-controls">
         <input
           type="text"
@@ -166,15 +169,13 @@ export default function HobbySpaceListPage({ user, onLogout }) {
               </div>
 
               <div className="card-footer">
+                <button className="view-btn" onClick={() => handleSpaceClick(space._id)}>
+                  View Space
+                </button>
                 {mySpaceIds.has(space._id) ? (
-                  <>
-                    <button className="view-btn" onClick={() => handleSpaceClick(space._id)}>
-                      View Space
-                    </button>
-                    <button className="leave-btn" onClick={() => handleLeaveSpace(space._id)}>
-                      Leave
-                    </button>
-                  </>
+                  <button className="leave-btn" onClick={() => handleLeaveSpace(space._id)}>
+                    Leave
+                  </button>
                 ) : (
                   <button className="join-btn" onClick={() => handleJoinSpace(space._id)}>
                     + Join Space

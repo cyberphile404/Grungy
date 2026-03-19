@@ -1,5 +1,5 @@
 :root {
-  --accent: #ff6b6b;
+  --accent: #00eaff;
   --accent-2: #a855f7;
   --border: rgba(255, 255, 255, 0.15);
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -74,9 +74,9 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
+  border-color: #a8d8f0;
+  background: rgba(168, 216, 240, 0.08);
+  box-shadow: 0 0 20px rgba(168, 216, 240, 0.18);
 }
 
 .search-input::placeholder {
@@ -91,27 +91,29 @@
 
 .filter-tab {
   padding: 0.875rem 1.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
+  background: rgba(168, 216, 240, 0.12);
+  color: #a8d8f0;
+  border: 1px solid #a8d8f0;
   border-radius: var(--radius);
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.05rem;
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.4px;
 }
 
 .filter-tab:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+  background: #a8d8f0;
+  color: #181818;
+  box-shadow: 0 6px 16px rgba(168, 216, 240, 0.18);
 }
 
 .filter-tab.active {
-  background: rgba(168, 216, 240, 0.15);
-  color: #a8d8f0;
-  border-color: transparent;
+  background: #a8d8f0;
+  color: #181818;
+  border-color: #a8d8f0;
+  box-shadow: 0 0 0 2px #a8d8f033;
 }
 
 .hobby-spaces-grid {
@@ -134,9 +136,8 @@
 
 .hobby-space-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 107, 107, 0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(255, 107, 107, 0.2);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  transform: translateY(-5px) scale(1.02);
 }
 
 .card-header {
@@ -240,28 +241,33 @@
 }
 
 .join-btn {
-  background: rgba(168, 216, 240, 0.15);
+  background: rgba(168, 216, 240, 0.18);
   color: #a8d8f0;
+  border: 1px solid #a8d8f0;
 }
 
 .join-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(168, 216, 240, 0.2);
+  background: #a8d8f0;
+  color: #181818;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(168, 216, 240, 0.18);
 }
 
 .view-btn {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
+  background: rgba(168, 216, 240, 0.12);
+  color: #a8d8f0;
+  border: 1px solid #a8d8f0;
 }
 
 .view-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: #a8d8f0;
+  color: #181818;
+  box-shadow: 0 6px 16px rgba(168, 216, 240, 0.18);
 }
 
 .leave-btn {
   background: rgba(216, 168, 240, 0.1);
-  color: #d8a8f0;
+  color: #a8d8f0;
   border: 1px solid rgba(216, 168, 240, 0.3);
 }
 

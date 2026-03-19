@@ -75,6 +75,24 @@
   border-radius: 12px;
 }
 
+.create-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #a8d8f0;
+  background: rgba(168, 216, 240, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(168, 216, 240, 0.2);
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+.create-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
 .composer-cta {
   display: flex;
   flex-direction: column;
@@ -210,26 +228,41 @@
 }
 
 .post-action.reacted {
-  color: #f0a8a8;
+  color: #a8d8f0;
 }
 
 .loading-spinner {
   text-align: center;
   padding: 40px;
-  color: #f0d8a8;
+  color: #a8d8f0;
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
 }
 
+.revision-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(216, 168, 240, 0.1);
+  color: #d8a8f0;
+  border: 1px solid rgba(216, 168, 240, 0.3);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .empty-state {
   text-align: center;
-  padding: 60px 20px;
-  color: #888;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.15));
+  border-radius: var(--radius, 12px);
+  backdrop-filter: blur(10px);
 }
 
 .empty-state h2 {
   font-family: 'Playfair Display', serif;
-  color: #f0d8a8;
+  color: var(--text-primary, #ffffff);
   margin-bottom: 10px;
   font-size: 1.8rem;
 }
@@ -260,7 +293,7 @@
 
 .primary-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 8px 20px rgba(168, 216, 240, 0.25);
 }
 
 .secondary-btn {
@@ -292,9 +325,9 @@
 
 .action-card:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 107, 107, 0.3);
+  border-color: #a8d8f0;
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(255, 107, 107, 0.2);
+  box-shadow: 0 12px 32px rgba(168, 216, 240, 0.22);
 }
 
 .action-header {
